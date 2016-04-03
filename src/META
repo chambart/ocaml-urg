@@ -1,0 +1,12 @@
+# OASIS_START
+# DO NOT EDIT (digest: 1e40902fbfb5659f7ef0aa85b3b34906)
+version = "0.1"
+description = "Urg"
+requires = "bigarray"
+archive(byte) = "urg.cma"
+archive(byte, plugin) = "urg.cma"
+archive(native) = "urg.cmxa"
+archive(native, plugin) = "urg.cmxs"
+exists_if = "urg.cma"
+# OASIS_STOP
+

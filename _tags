@@ -1,0 +1,45 @@
+# OASIS_START
+# DO NOT EDIT (digest: 427b18182ac79dad2f74f97ee656c479)
+# Ignore VCS directories, you can use the same kind of rule outside
+# OASIS_START/STOP if you want to exclude directories that contains
+# useless stuff for the build process
+true: annot, bin_annot
+<**/.svn>: -traverse
+<**/.svn>: not_hygienic
+".bzr": -traverse
+".bzr": not_hygienic
+".hg": -traverse
+".hg": not_hygienic
+".git": -traverse
+".git": not_hygienic
+"_darcs": -traverse
+"_darcs": not_hygienic
+# Library urg
+"src/urg.cmxs": use_urg
+<src/urg.{cma,cmxa}>: oasis_library_urg_cclib
+"src/liburg_stubs.lib": oasis_library_urg_cclib
+"src/dllurg_stubs.dll": oasis_library_urg_cclib
+"src/liburg_stubs.a": oasis_library_urg_cclib
+"src/dllurg_stubs.so": oasis_library_urg_cclib
+<src/urg.{cma,cmxa}>: use_liburg_stubs
+<src/*.ml{,i,y}>: pkg_bigarray
+"src/ocaml_urg_stub.c": pkg_bigarray
+# Executable dump
+"test/dump.byte": pkg_bigarray
+"test/dump.byte": use_urg
+# Executable test
+"test/test.byte": pkg_bigarray
+"test/test.byte": use_urg
+# Executable angles
+"test/angles.byte": pkg_bigarray
+"test/angles.byte": use_urg
+# Executable test_lwt
+"test/test_lwt.byte": pkg_bigarray
+"test/test_lwt.byte": pkg_lwt.preemptive
+"test/test_lwt.byte": pkg_threads
+"test/test_lwt.byte": use_urg
+<test/*.ml{,i,y}>: pkg_bigarray
+<test/*.ml{,i,y}>: pkg_lwt.preemptive
+<test/*.ml{,i,y}>: pkg_threads
+<test/*.ml{,i,y}>: use_urg
+# OASIS_STOP
