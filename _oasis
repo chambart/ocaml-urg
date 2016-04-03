@@ -1,0 +1,70 @@
+# +-------------------------------------------------------------------+
+# | Package parameters                                                |
+# +-------------------------------------------------------------------+
+
+OASISFormat: 0.4
+OCamlVersion: >= 3.12
+Name: urg
+Version: 0.1
+LicenseFile: COPYING
+License: MIT
+Authors:
+  Pierre Chambart
+Homepage: http://github.com/chambart/ocaml-urg
+BuildTools: ocamlbuild
+Plugins: DevFiles (0.3), META (0.3)
+
+Synopsis: Interface to Hokuyo's URG laser rangefinder
+Description:
+  This is a binding to the URG C library with a simple API.
+
+# +-------------------------------------------------------------------+
+# | Libraries                                                         |
+# +-------------------------------------------------------------------+
+
+Library "urg"
+  Path: src/
+  Modules:
+    Urg
+  CSources:
+    ocaml_urg_stub.c
+  CClib: -lc_urg -lc_urg_connection -lc_urg_system
+  XMETADescription: Urg
+  BuildDepends: bigarray
+
+Executable "dump"
+  Build$: flag(tests)
+  Path: test/
+  MainIs: dump.ml
+  Install: false
+  BuildDepends: urg, bigarray
+
+Executable "test"
+  Build$: flag(tests)
+  Path: test/
+  MainIs: test.ml
+  Install: false
+  BuildDepends: urg, bigarray
+
+Executable "angles"
+  Build$: flag(tests)
+  Path: test/
+  MainIs: angles.ml
+  Install: false
+  BuildDepends: urg, bigarray
+
+Executable "test_lwt"
+  Build$: flag(tests)
+  Path: test/
+  MainIs: test_lwt.ml
+  Install: false
+  BuildDepends: urg, bigarray, lwt.preemptive, threads
+
+# +-------------------------------------------------------------------+
+# | Misc                                                              |
+# +-------------------------------------------------------------------+
+
+SourceRepository head
+  Type: git
+  Location: git://github.com/chambart/ocaml-urg
+  Browser: https://github.com/chambart/ocaml-urg
