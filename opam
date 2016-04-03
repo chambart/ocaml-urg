@@ -1,0 +1,18 @@
+opam-version: "1.2"
+name: "urg"
+version: "0.1"
+maintainer: "Pierre Chambart <pierre.chambart@ocamlpro.com>"
+authors: "Pierre Chambart <pierre.chambart@ocamlpro.com>"
+homepage: "http://github.com/chambart/ocaml-urg"
+bug-reports: "http://github.com/chambart/ocaml-urg/issues"
+license: "MIT"
+build: [
+  ["./configure" "--prefix=%{prefix}%"]
+  [make]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "urg"]
+depends: "ocamlfind" {build}
+depexts: [
+  [["debian"] ["liburg0-dev"]]
+]
